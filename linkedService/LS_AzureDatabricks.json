@@ -11,7 +11,8 @@
 					"referenceName": "LS_AzureKeyVault",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "adf-databricks-token"
+				"secretName": "adb-token",
+				"secretVersion": "17e007144a404468ae236a711460d2b2"
 			},
 			"existingClusterId": "1015-071751-zklvjhy3"
 		}
