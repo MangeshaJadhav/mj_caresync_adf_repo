@@ -150,7 +150,7 @@
 				"typeProperties": {
 					"variableName": "logic_apps_body",
 					"value": {
-						"value": "{\n    \"subject\":\"@{variables('email_subject')}\",\n    \"email receipients\":\"@{pipeline().globalParameters.email_receipent}\",\n    \"body_header\":\"@{variables('body_header')}\",\n    \"body_footer\":\"@{variables('body_footer')}\",\n    \"status_table\":\"@{activity('Read all the table status').output}\"\n  }",
+						"value": "{\n    \"subject\":\"@{variables('email_subject')}\",\n    \"email receipients\":\"@{pipeline().globalParameters.email_receipent}\",\n    \"body_header\":\"@{variables('body_header')}\",\n    \"body_footer\":\"@{variables('body_footer')}\",\n    \"status_table\":\"@{activity('Read all the table status').output.value}\"\n  }",
 						"type": "Expression"
 					}
 				}
