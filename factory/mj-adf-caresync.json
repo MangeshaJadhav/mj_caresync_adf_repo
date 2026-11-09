@@ -1,0 +1,12 @@
+{
+	"name": "mj-adf-caresync",
+	"properties": {
+		"globalParameters": {
+			"email_receipent": {
+				"type": "string",
+				"value": "mangeshjadhavteam@gmail.com"
+			}
+		}
+	},
+	"location": "centralindia"
+}
