@@ -56,8 +56,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "body_header",
-					"value": "Ingestion and processing have been completed, and below is the status"
+					"variableName": "body_footer",
+					"value": "For any support reach out to mangeshjadhav987@gmail.com"
 				}
 			},
 			{
@@ -112,6 +112,48 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Prepare Logic App Body",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Read all the table status",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Subject",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Body Header",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Email Body Footer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "logic_apps_body",
+					"value": {
+						"value": "{\n    \"subject\":\"@{variables('email_subject')}\",\n    \"email receipients\":\"@{pipeline().globalParameters.email_receipent}\",\n    \"body_header\":\"@{variables('body_header')}\",\n    \"body_footer\":\"@{variables('body_footer')}\",\n    \"status_table\":[]\n  }",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -125,6 +167,12 @@
 				"type": "String"
 			},
 			"email_subject": {
+				"type": "String"
+			},
+			"logic_apps_body": {
+				"type": "String"
+			},
+			"body_footer": {
 				"type": "String"
 			}
 		},
